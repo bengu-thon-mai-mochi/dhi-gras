@@ -33,7 +33,6 @@ const Navbar = () => {
                         </Typography>
                         <MapIcon fontSize="large" />
                     </IconButton>
-
                 </Toolbar>
             </AppBar>
         </>

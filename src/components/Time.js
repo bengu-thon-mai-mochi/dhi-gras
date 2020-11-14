@@ -3,12 +3,12 @@ import Graph from './Graph';
 import GeoContext from '../geoContext';
 
 const Time = () => {
-    const geoState = useContext(GeoContext);
-
+    const { locationInfo } = useContext(GeoContext);
+    
     return (
         <>
             {
-                geoState.locationInfo
+                locationInfo
                     ?
                     <Graph />
                     :

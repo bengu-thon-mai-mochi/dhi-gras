@@ -1,28 +1,30 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import GeoContext from '../geoContext';
-import { ResponsiveContainer, AreaChart, Area, Tooltip, XAxis, YAxis, Legend } from 'recharts';
+import {  AreaChart, Area, Tooltip, XAxis, YAxis, Legend } from 'recharts';
 import axios from 'axios';
 
 const Graph = () => {
-    const geoState = useContext(GeoContext);
+    const { 
+        locationInfo : {
+            latitude, 
+            longitude
+        } 
+    }= useContext(GeoContext);
     const [chartData, setChartData] = useState();
 
-    useEffect(() => {
-        axios.get(`https://api.met.no/weatherapi/locationforecast/2.0/complete?altitude=0&lat=${geoState.locationInfo.latitude}&lon=${geoState.locationInfo.longitude}`)
-            .then(weatherData => {
-                const timeseries = weatherData.data.properties.timeseries;
+    axios.get(`https://api.met.no/weatherapi/locationforecast/2.0/complete?altitude=0&lat=${latitude}&lon=${longitude}`)
+        .then(weatherData => {
+            const timeseries = weatherData.data.properties.timeseries;
 
-                const selectedData = timeseries.map(data => {
-                    return {
-                        time: data.time,
-                        air_temperature: data.data.instant.details.air_temperature
-                    }
-                });
+            const selectedData = timeseries.map(data => {
+                return {
+                    time: data.time,
+                    air_temperature: data.data.instant.details.air_temperature
+                }
+            });
 
-                setChartData(selectedData);
-            })
-    }
-        , [])
+            setChartData(selectedData);
+        })
 
     return (
         <>

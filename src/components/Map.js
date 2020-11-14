@@ -16,7 +16,7 @@ const Map = () => {
     });
     const [playgrounds, setPlaygrounds] = useState();
     const [selectedPlayground, setSelectedPlayground] = useState();
-    const geoState = useContext(GeoContext);
+    const { setLocationInfo } = useContext(GeoContext);
     const history = useHistory();
 
     useEffect(() => {
@@ -65,11 +65,13 @@ const Map = () => {
                     offsetTop={33}
                 >
                     <Button onClick={() => {
-                        geoState.setLocationInfo({
+                        setLocationInfo({
                             latitude: selectedPlayground.geometry.coordinates[0][1],
                             longitude: selectedPlayground.geometry.coordinates[0][0],
                             name: selectedPlayground.properties.navn
-                        }); history.push('/time');
+                        }); 
+                        
+                        history.push('/time');
                     }
                     }>See temperature</Button>
                 </Popup>
