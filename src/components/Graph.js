@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import GeoContext from '../geoContext';
+import { ResponsiveContainer, AreaChart, Area, Tooltip, XAxis, YAxis, Legend } from 'recharts';
 import axios from 'axios';
 
 const Graph = () => {
@@ -20,11 +21,22 @@ const Graph = () => {
 
                 setChartData(selectedData);
             })
-    }, [])
+    }
+        , [])
 
     return (
         <>
-
+            <AreaChart
+                data={chartData}
+                width={500}
+                height={400}
+            >
+                <XAxis dataKey="time" name="time" domain={['auto', 'auto']} />
+                <YAxis dataKey="air_temperature" name="temperature" unit="C" />
+                <Area type="monotone" dataKey="air_temperature" fill="#8884d8" stroke="#8884d8" lineJointType="monotoneX" />
+                <Tooltip />
+                <Legend />
+            </AreaChart>
         </>
     );
 };
