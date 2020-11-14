@@ -13,13 +13,13 @@ const Map = () => {
         zoom: 10
     });
     const [playgrounds, setPlaygrounds] = useState();
+    const [selectedPlayground, setSelectedPlayground] = useState()
 
     useEffect(() => {
         axios.get('https://wfs-kbhkort.kk.dk/k101/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=k101:legeplads&outputFormat=json&SRSNAME=EPSG:4326')
             .then((playgroundData) => {
                 const filteredData = playgroundData.data.features.filter(feature => feature.geometry);
                 setPlaygrounds(filteredData);
-                console.log(filteredData)
             })
     }, []);
 
@@ -38,12 +38,29 @@ const Map = () => {
                         offsetLeft={-20}
                         offsetTop={-10}
                     >
-                        <IconButton>
+                        <IconButton onClick={() => setSelectedPlayground({
+                            latitude: playground.geometry.coordinates[0][1],
+                            longitude: playground.geometry.coordinates[0][0]
+                        })}>
                             <PlaceIcon />
                         </IconButton>
                     </Marker>)
                 :
                 <div>Loading</div>
+            }
+            {
+                selectedPlayground && <Popup
+                    latitude={selectedPlayground.latitude}
+                    longitude={selectedPlayground.longitude}
+                    closeButton={true}
+                    closeOnClick={false}
+                    onClose={() => setSelectedPlayground(null)}
+                    tipSize={16}
+                    offsetLeft={10}
+                    offsetTop={33}
+                >
+                    here is a popup
+                </Popup>
             }
         </MapBoxGL>
     );
