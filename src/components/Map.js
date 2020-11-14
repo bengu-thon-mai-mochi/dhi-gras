@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import MapBoxGL, { Marker, Popup } from 'react-map-gl';
-import { IconButton } from '@material-ui/core';
-import PlaceIcon from '@material-ui/icons/Place'
+import { IconButton, Button } from '@material-ui/core';
+import PlaceIcon from '@material-ui/icons/Place';
+import GeoContext from '../geoContext';
 
 const Map = () => {
     const [viewport, setViewport] = useState({
@@ -13,7 +14,8 @@ const Map = () => {
         zoom: 10
     });
     const [playgrounds, setPlaygrounds] = useState();
-    const [selectedPlayground, setSelectedPlayground] = useState()
+    const [selectedPlayground, setSelectedPlayground] = useState();
+    const geoState = useContext(GeoContext)
 
     useEffect(() => {
         axios.get('https://wfs-kbhkort.kk.dk/k101/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=k101:legeplads&outputFormat=json&SRSNAME=EPSG:4326')
@@ -38,10 +40,11 @@ const Map = () => {
                         offsetLeft={-20}
                         offsetTop={-10}
                     >
-                        <IconButton onClick={() => setSelectedPlayground({
-                            latitude: playground.geometry.coordinates[0][1],
-                            longitude: playground.geometry.coordinates[0][0]
-                        })}>
+                        <IconButton onClick={(e) => {
+                            e.preventDefault();
+                            setSelectedPlayground(playground);
+                            console.log(playground)
+                        }}>
                             <PlaceIcon />
                         </IconButton>
                     </Marker>)
@@ -50,8 +53,8 @@ const Map = () => {
             }
             {
                 selectedPlayground && <Popup
-                    latitude={selectedPlayground.latitude}
-                    longitude={selectedPlayground.longitude}
+                    latitude={selectedPlayground.geometry.coordinates[0][1]}
+                    longitude={selectedPlayground.geometry.coordinates[0][0]}
                     closeButton={true}
                     closeOnClick={false}
                     onClose={() => setSelectedPlayground(null)}
@@ -59,10 +62,14 @@ const Map = () => {
                     offsetLeft={10}
                     offsetTop={33}
                 >
-                    here is a popup
+                    <Button onClick={() => geoState.setLocationInfo({
+                        latitude: selectedPlayground.geometry.coordinates[0][1],
+                        longitude: selectedPlayground.geometry.coordinates[0][0],
+                        name: selectedPlayground.properties.navn
+                    })}>See temperature</Button>
                 </Popup>
             }
-        </MapBoxGL>
+        </MapBoxGL >
     );
 };
 
