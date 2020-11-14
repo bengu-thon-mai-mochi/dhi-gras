@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import MapBoxGL from 'react-map-gl';
+import MapBoxGL, { Marker, Popup } from 'react-map-gl';
+import { IconButton } from '@material-ui/core';
+import PlaceIcon from '@material-ui/icons/Place'
 
 const Map = () => {
     const [viewport, setViewport] = useState({
@@ -16,7 +18,8 @@ const Map = () => {
         axios.get('https://wfs-kbhkort.kk.dk/k101/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=k101:legeplads&outputFormat=json&SRSNAME=EPSG:4326')
             .then((playgroundData) => {
                 const filteredData = playgroundData.data.features.filter(feature => feature.geometry);
-                setPlaygroundData(filteredData);
+                setPlaygrounds(filteredData);
+                console.log(filteredData)
             })
     }, []);
 
@@ -26,7 +29,22 @@ const Map = () => {
             mapboxApiAccessToken={process.env.REACT_APP_MAPACCESS_TOKEN}
             onViewportChange={(nextViewport => setViewport(nextViewport))}
         >
-
+            {playgrounds ?
+                playgrounds.map(playground =>
+                    < Marker
+                        key={playground.id}
+                        latitude={playground.geometry.coordinates[0][1]}
+                        longitude={playground.geometry.coordinates[0][0]}
+                        offsetLeft={-20}
+                        offsetTop={-10}
+                    >
+                        <IconButton>
+                            <PlaceIcon />
+                        </IconButton>
+                    </Marker>)
+                :
+                <div>Loading</div>
+            }
         </MapBoxGL>
     );
 };
