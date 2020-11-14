@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Graph from './Graph';
+import GeoContext from '../geoContext';
 
 const Time = () => {
+    const geoState = useContext(GeoContext);
+
     return (
         <>
-            <Graph />
+            {
+                geoState.locationInfo
+                    ?
+                    <Graph />
+                    :
+                    <div>Please go to map and pick a location</div>
+            }
         </>
     );
 };
