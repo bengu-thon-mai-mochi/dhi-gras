@@ -36,7 +36,6 @@ const Graph = () => {
                 });
 
                 setChartData(selectedData);
-                console.log(selectedData)
             })
     }, [])
 
@@ -47,7 +46,7 @@ const Graph = () => {
                 <CardContent>
                     <AreaChart
                         data={chartData}
-                        width={500}
+                        width={800}
                         height={400}
                     >
                         <defs>
@@ -56,9 +55,9 @@ const Graph = () => {
                                 <stop offset="100%" stopColor="#b3b3f2" />
                             </linearGradient>
                         </defs>
-                        <XAxis orientation="top" type="number" tickCount={12} dataKey="time" name="time" domain={['dataMin', 'dataMax']} />
+                        <XAxis orientation="top" tickCount={13} fontSize={24} padding={{ left: 20, right: 20 }} tickLine={false} dataKey="time" name="time" domain={['dataMin', 'dataMax']} />
                         <YAxis dataKey="air_temperature" name="Temperature" unit="C" />
-                        <Area dataKey="air_temperature" name="Temperature" type="basis" fill="url(#temperatureGradient)" stroke="#8884d8" />
+                        <Area dataKey="air_temperature" name="Temperature" type="basis" fill="url(#temperatureGradient)" stroke="#5ac322" strokeWidth={2} />
                         <Tooltip />
                         <Legend />
                     </AreaChart>
