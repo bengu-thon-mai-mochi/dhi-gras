@@ -45,7 +45,6 @@ const Map = () => {
                         <IconButton onClick={(e) => {
                             e.preventDefault();
                             setSelectedPlayground(playground);
-                            console.log(playground)
                         }}>
                             <PlaceIcon />
                         </IconButton>
@@ -69,8 +68,8 @@ const Map = () => {
                             latitude: selectedPlayground.geometry.coordinates[0][1],
                             longitude: selectedPlayground.geometry.coordinates[0][0],
                             name: selectedPlayground.properties.navn
-                        }); 
-                        
+                        });
+
                         history.push('/time');
                     }
                     }>See temperature</Button>
