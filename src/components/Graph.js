@@ -74,7 +74,7 @@ const Graph = () => {
                                     </linearGradient>
                                 </defs>
                                 <XAxis orientation="top" tickCount={13} fontSize={24} padding={{ left: 20, right: 20 }} tickLine={false} dataKey="time" name="time" domain={['dataMin', 'dataMax']} />
-                                <YAxis dataKey="air_temperature" name="Temperature" unit="C" />
+                                <YAxis dataKey="air_temperature" domain={[0, 20]} name="Temperature" unit="C" />
                                 <Area dataKey="air_temperature" name="Temperature" type="basis" fill="url(#temperatureGradient)" stroke="#5ac322" strokeWidth={2} />
                                 <Tooltip />
                                 <Legend />

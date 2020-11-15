@@ -27,7 +27,7 @@ const Space = () => {
         longitude: 12.5700724,
         width: '100vw',
         height: 'inherit',
-        zoom: 10
+        zoom: 12
     });
 
     const [playgrounds, setPlaygrounds] = useState();
