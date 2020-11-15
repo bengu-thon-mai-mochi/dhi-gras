@@ -5,7 +5,6 @@ import axios from 'axios';
 import { Box, Card, CardHeader, CardContent, Fade } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-
 const useStyles = makeStyles({
     root: {
         display: 'flex',
