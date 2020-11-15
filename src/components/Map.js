@@ -51,7 +51,7 @@ const Map = () => {
         >
             {playgrounds ?
                 playgrounds.map(playground =>
-                    < Marker
+                    <Marker
                         key={playground.id}
                         latitude={playground.geometry.coordinates[0][1]}
                         longitude={playground.geometry.coordinates[0][0]}
@@ -83,7 +83,7 @@ const Map = () => {
                     offsetLeft={10}
                     offsetTop={33}
                 >
-                    <Button onClick={() => {
+                    <Button color="secondary" onClick={() => {
                         setLocationInfo({
                             latitude: selectedPlayground.geometry.coordinates[0][1],
                             longitude: selectedPlayground.geometry.coordinates[0][0],

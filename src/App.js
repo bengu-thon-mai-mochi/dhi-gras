@@ -17,15 +17,15 @@ const App = () => {
     <>
       <CssBaseline />
       <GeoContext.Provider value={{ locationInfo, setLocationInfo }} >
-        <Switch>
-          <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <Switch>
             <Layout>
               <Route exact path="/" component={Home} />
               <Route exact path="/Space" component={Space} />
               <Route exact path="/Time" component={Time} />
             </Layout>
-          </ThemeProvider>
-        </Switch>
+          </Switch>
+        </ThemeProvider>
       </GeoContext.Provider>
     </>
   );

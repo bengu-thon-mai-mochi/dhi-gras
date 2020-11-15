@@ -54,7 +54,7 @@ const Graph = () => {
 
                 setChartData(selectedData);
             })
-    }, [])
+    }, [latitude, longitude])
 
     return (
         <>
