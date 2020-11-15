@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, IconButton } from '@material-ui/core';
+import { AppBar, Box, Toolbar, Typography, IconButton } from '@material-ui/core';
 import MapIcon from '@material-ui/icons/Map';
 import HomeIcon from '@material-ui/icons/Home';
 
@@ -31,19 +31,23 @@ const Navbar = () => {
                     {
                         (history.location.pathname === '/space')
                             ?
-                            < IconButton className={classes.iconLocation} color="inherit" onClick={() => history.push("/")}>
-                                <Typography variant="h5">
-                                    Back to Home
-                                </Typography>
-                                <HomeIcon fontSize="large" />
-                            </IconButton>
+                            <Box className={classes.iconLocation}>
+                                <IconButton color="inherit" onClick={() => history.push("/")}>
+                                    <Typography variant="h5">
+                                        Back to Home
+                                    </Typography>
+                                    <HomeIcon fontSize="large" />
+                                </IconButton>
+                            </Box>
                             :
-                            <IconButton className={classes.iconLocation} color="inherit" onClick={() => history.push("/space")}>
-                                <Typography variant="h5">
-                                    Visit Map
+                            <Box className={classes.iconLocation}>
+                                <IconButton color="inherit" onClick={() => history.push("/space")}>
+                                    <Typography variant="h5">
+                                        Visit Map
                                 </Typography>
-                                <MapIcon fontSize="large" />
-                            </IconButton>
+                                    <MapIcon fontSize="large" />
+                                </IconButton>
+                            </Box>
                     }
                 </Toolbar>
             </AppBar>
