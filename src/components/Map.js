@@ -2,11 +2,27 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import MapBoxGL, { Marker, Popup } from 'react-map-gl';
-import { IconButton, Button } from '@material-ui/core';
+import { IconButton, Button, Box, Typography } from '@material-ui/core';
 import PlaceIcon from '@material-ui/icons/Place';
 import GeoContext from '../geoContext';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+    root: {
+        height: '90%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    containerStyle: {
+        textAlign: 'center'
+    }
+})
+
 
 const Map = () => {
+    const classes = useStyles();
+
     const [viewport, setViewport] = useState({
         latitude: 55.6867243,
         longitude: 12.5700724,
@@ -50,7 +66,11 @@ const Map = () => {
                         </IconButton>
                     </Marker>)
                 :
-                <div>Loading</div>
+                <Box className={classes.root}>
+                    <Box className={classes.containerStyle}>
+                        <Typography variant="h4"> Loading </Typography>
+                    </Box>
+                </Box>
             }
             {
                 selectedPlayground && <Popup
@@ -67,7 +87,8 @@ const Map = () => {
                         setLocationInfo({
                             latitude: selectedPlayground.geometry.coordinates[0][1],
                             longitude: selectedPlayground.geometry.coordinates[0][0],
-                            name: selectedPlayground.properties.navn
+                            name: selectedPlayground.properties.navn,
+                            checked: true
                         });
 
                         history.push('/time');

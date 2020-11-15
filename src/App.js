@@ -5,6 +5,8 @@ import Home from './components/Home';
 import Space from './components/Space';
 import Time from './components/Time';
 import { CssBaseline } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/styles';
+import theme from './theme';
 import GeoContext from './geoContext';
 
 
@@ -16,11 +18,13 @@ const App = () => {
       <CssBaseline />
       <GeoContext.Provider value={{ locationInfo, setLocationInfo }} >
         <Switch>
-          <Layout>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/Space" component={Space} />
-            <Route exact path="/Time" component={Time} />
-          </Layout>
+          <ThemeProvider theme={theme}>
+            <Layout>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/Space" component={Space} />
+              <Route exact path="/Time" component={Time} />
+            </Layout>
+          </ThemeProvider>
         </Switch>
       </GeoContext.Provider>
     </>
