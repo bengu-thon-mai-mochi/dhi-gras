@@ -36,18 +36,16 @@ const Graph = () => {
                 const timeseries = weatherData.data.properties.timeseries.slice(0, 13);
 
                 const selectedData = timeseries.map(data => {
+                    console.log(data.data.next_1_hours.summary.symbol_code)
+
                     const date = new Date(data.time);
                     const hour = date.getHours();
-                    if (hour === 0) {
-                        return {
-                            time: 24,
-                            air_temperature: data.data.instant.details.air_temperature
-                        }
-                    } else {
-                        return {
-                            time: hour,
-                            air_temperature: data.data.instant.details.air_temperature
-                        }
+
+                    return {
+                        time: hour,
+                        air_temperature: data.data.instant.details.air_temperature,
+                        symbol_code: data.data.next_1_hours.summary.symbol_code,
+                        precipitation_amount: data.data.next_1_hours.precipitation_amount
                     }
                 });
 
