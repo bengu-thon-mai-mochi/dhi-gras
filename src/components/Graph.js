@@ -49,6 +49,7 @@ const Graph = () => {
                 });
                 setChartData(selectedData);
             })
+            .catch(err => { throw (err) })
     }, [latitude, longitude])
 
     return (

@@ -46,6 +46,7 @@ const Space = () => {
                 const filteredData = playgroundData.data.features.filter(feature => feature.geometry);
                 setPlaygrounds(filteredData);
             })
+            .catch(err => { throw err })
     }, []);
 
     return (
