@@ -6,16 +6,18 @@ import { IconButton, Button, Box, Typography, Grow } from '@material-ui/core';
 import FlagsIcon from '@material-ui/icons/Flag';
 import GeoContext from '../geoContext';
 import { makeStyles } from '@material-ui/core/styles';
+import LoadingPage from './LoadingPage';
 
 const useStyles = makeStyles({
     root: {
         height: '90%',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        flexDirection: 'column',
+        padding: '50px'
     },
     containerStyle: {
-        textAlign: 'center'
+        textAlign: 'center',
+        paddingTop: '10px'
     }
 })
 
@@ -73,11 +75,7 @@ const Space = () => {
                     </Marker>
                 )
                 :
-                <Box className={classes.root}>
-                    <Box className={classes.containerStyle}>
-                        <Typography variant="h4"> Loading </Typography>
-                    </Box>
-                </Box>
+                <LoadingPage />
             }
             {
                 selectedPlayground && <Popup
