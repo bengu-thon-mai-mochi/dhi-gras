@@ -57,7 +57,7 @@ const Graph = () => {
         <>
             <Box className={classes.root}>
                 <Card className={classes.cardStyle}>
-                    <CardContent>
+                    <CardContent className={classes.root}>
                         <Fade in={checked}
                             {...(checked ? { timeout: 4000 } : {})}>
                             <AreaChart
