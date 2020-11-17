@@ -8,18 +8,27 @@ import GeoContext from '../geoContext';
 import { makeStyles } from '@material-ui/core/styles';
 import LoadingPage from './LoadingPage';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
         height: '90%',
         display: 'flex',
         flexDirection: 'column',
-        padding: '50px'
+        padding: 5,
+        paddingTop: 15
     },
     containerStyle: {
         textAlign: 'center',
-        paddingTop: '10px'
+        paddingTop: 10
+    },
+    buttonStyle: {
+        backgroundColor: '#6C63FF',
+        fontSize: 16,
+        color: 'white',
+        '&:hover': {
+            background: `linear-gradient(45deg, ${theme.palette.primary.light} 17%, #6C63FF 89%)`,
+        },
     }
-})
+}))
 
 const Space = () => {
     const classes = useStyles();
@@ -96,7 +105,7 @@ const Space = () => {
                         <Typography variant="subtitle1" color="primary"> Beskrivelse </Typography>
                         <Typography variant="subtitle2" > {selectedPlayground.properties.beskrivelse}</Typography>
                         <Box className={classes.root}>
-                            <Button variant="outlined" color="primary" onClick={() => {
+                            <Button variant="contained" className={classes.buttonStyle} onClick={() => {
                                 setLocationInfo({
                                     latitude: selectedPlayground.geometry.coordinates[0][1],
                                     longitude: selectedPlayground.geometry.coordinates[0][0],
