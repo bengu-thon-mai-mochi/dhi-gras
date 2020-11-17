@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Temperature at Playgrounds
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This website allows Copenhageners to see the temperature for next 12 hours in a chosen playground, while the graph depicts the temperature, once hovered over the a particular time, users can also see chance of rain. 
 
-## Available Scripts
+Visit the app here: (https://musing-archimedes-5dcb35.netlify.app/).
 
-In the project directory, you can run:
+## How to Use
 
-### `yarn start`
+1. Clone the repo to your computer.
+2. In your terminal, `cd` into the project directory.
+3. Add `.env` file to the root of the project.
+4. Get an access token from (https://www.mapbox.com/) and add the api key to `.env`
+5. In your terminal, run `npm i`.
+6. Once the packages are installed, run `npm start`
+7. Visit http://localhost:3000 in your browser. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Stack highlight
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+I used all the libraries and tech stack recommended in the brief for this project. 
+ -React
+ -React-router
+ -Material UI
+ -Mapbox GL JS
+ -Recharts
 
-### `yarn test`
+In addition to this, I incorporated Axios library and Moment. 
+I love using axios for making Api calls because it automates the JSON data transformation. Moment library also comes in handy when formatting dates.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For charting library I used recharts. It was my first time using a charting library but I loved how recharts documentation is nicely organised and easy to understand and follow.
 
-### `yarn build`
+## Future Developments
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I would like to work on making more interactive interface for the chart page. I think there can be so much to do with the data you receive from user interaction with the graph. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+For example, associating weather summary for each hour with colors responding to 'cloudy' or 'clear sky' and making graph change color. Or, using probability of rain to change cursor symbol to an umbrella to clear sky icon. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Furthermore, responsiveness can be adjusted and aria-labels can be integrated. 
