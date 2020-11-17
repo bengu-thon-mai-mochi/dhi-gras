@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './Navbar';
+import Navbar from './NavBar/Navbar';
 import { Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
