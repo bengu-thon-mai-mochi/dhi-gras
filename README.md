@@ -1,8 +1,8 @@
 # Temperature at Playgrounds
 
-This website allows Copenhageners to see the temperature for next 12 hours in a chosen playground, while the graph depicts the temperature, once hovered over the a particular time, users can also see chance of rain. 
+This website allows Copenhageners to see the temperature for next 12 hours in a chosen playground. Hovering over the temperature time-series graph displays chance of rain at that point in time. Use this app and you'll never get caught in the rain again! Unless you want to. :)
 
-Visit the app here: (https://musing-archimedes-5dcb35.netlify.app/).
+[Live Demo](https://musing-archimedes-5dcb35.netlify.app/).
 
 ## How to Use
 
@@ -17,11 +17,11 @@ Visit the app here: (https://musing-archimedes-5dcb35.netlify.app/).
 ## Stack highlight
 
 I used all the libraries and tech stack recommended in the brief for this project. 
- -React
- -React-router
- -Material UI
- -Mapbox GL JS
- -Recharts
+ * React
+ * React-router
+ * Material UI
+ * Mapbox GL JS
+ * Recharts
 
 In addition to this, I incorporated Axios library and Moment. 
 I love using axios for making Api calls because it automates the JSON data transformation. Moment library also comes in handy when formatting dates.
