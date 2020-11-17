@@ -8,10 +8,10 @@ This website allows Copenhageners to see the temperature for next 12 hours in a 
 
 1. Clone the repo to your computer.
 2. In your terminal, `cd` into the project directory.
-3. Add `.env` file to the root of the project.
-4. Get an access token from (https://www.mapbox.com/) and add the api key to `.env`
+4. Get an access token from (https://www.mapbox.com/) and add the api key to `.env.example` where its specified. Save.
+5. Rename the file to `.env`.
 5. In your terminal, run `npm i`.
-6. Once the packages are installed, run `npm start`
+6. Once the packages are installed, run `npm start`.
 7. Visit http://localhost:3000 in your browser. 
 
 ## Stack highlight
