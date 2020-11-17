@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import moment from 'moment';
 import GeoContext from '../geoContext';
 import { AreaChart, Area, Tooltip, XAxis, YAxis, Legend } from 'recharts';
 import axios from 'axios';
@@ -37,9 +38,9 @@ const Graph = () => {
             .then(weatherData => {
                 const timeseries = weatherData.data.properties.timeseries.slice(0, 13);
                 const selectedData = timeseries.map(data => {
-
                     const date = new Date(data.time);
-                    const hour = date.getHours();
+                    const hour = moment(date).format('hh A');
+
                     return {
                         time: hour,
                         air_temperature: data.data.instant.details.air_temperature,
@@ -70,7 +71,7 @@ const Graph = () => {
                                         <stop offset="100%" stopColor="#b3b3f2" />
                                     </linearGradient>
                                 </defs>
-                                <XAxis orientation="top" tickCount={13} fontSize={24} padding={{ left: 20, right: 20 }} tickLine={false} dataKey="time" name="Time" domain={['dataMin', 'dataMax']} />
+                                <XAxis orientation="top" tickCount={13} fontSize={16} padding={{ right: 20 }} tickLine={false} dataKey="time" name="Time" domain={['dataMin', 'dataMax']} />
                                 <YAxis dataKey="air_temperature" domain={[0, 20]} name="Temperature" unit="C" />
                                 <Area dataKey="air_temperature" name="Temperature" type="basis" fill="url(#temperatureGradient)" stroke="#5ac322" strokeWidth={2} />
                                 <Tooltip content={<CustomTooltipContent />} labelFormatter={title => title + " o'clock"} />
