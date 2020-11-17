@@ -39,7 +39,7 @@ const CustomTooltipContent = ({ active, payload }) => {
             <Typography>
                 <Box component="span" className={classes.contentLabel}> Temperature: </Box>
                 {payload[0].payload.air_temperature} °C
-                    </Typography>
+            </Typography>
             <Typography>
                 <Box component="span" className={classes.contentLabel} color="primary"> Chance of Rain: </Box>
                 {payload[0].payload.probability_of_precipitation} %
