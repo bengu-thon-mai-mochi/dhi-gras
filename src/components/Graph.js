@@ -5,7 +5,7 @@ import { AreaChart, Area, Tooltip, XAxis, YAxis, Legend } from 'recharts';
 import axios from 'axios';
 import { Box, Card, CardHeader, CardContent, Fade } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import CustomTooltipContent from './CustomTootipContent';
+import CustomTooltipContent from './CustomTooltipContent';
 
 const useStyles = makeStyles({
     root: {
